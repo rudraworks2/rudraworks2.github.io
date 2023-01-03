@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title"></title>
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    
+    <div id="container">
+         <div id="nav"></div>
+         <div id="extra2"></div>
+
+         <div id="chapters">
+            <div>
+                <img id="chapterImage" src="../../images/ch1.jpg" alt="">
+            </div>
+            <div id="chname">
+                अर्जुन विषाद योग
+            </div>
+
+            <div id="shlok_">श्लोक</div>
+            <div id="verses">
+            </div>
+
+         </div>
+         <div id="extra1"> </div>
+         <div id="content">
+            <div id="completed"></div>
+
+            <div id="shlok">
+                सञ्जय उवाच।<br>
+                दृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा।<br>
+                आचार्यमुपसङ्गम्य राजा वचनमब्रतीत् ॥2॥<br>
+                <br>
+                <audio controls controlsList="nodownload" src="../verse2/sounds/shlok.mp3"></audio>
+            </div>
+            <div id="difficultWords">
+                सञ्जय: उवाच—संजय ने कहा; दृष्ट्वा—देखकर; तु—लेकिन; पाण्डव-अनीकम्— पाण्डवों की सेना को; व्यूढम्—व्यूहरचना को; दुर्योधन:—राजा दुर्योधन ने; तदा— उस समय; आचार्यम्—शिक्षक, गुरु के; उपसङ्गम्य—पास जाकर; राजा—राजा; वचनम्—शब्द; अब्रवीत्—कहा ।.            </div>
+            <div id="meaning">
+                संजय ने कहा—हे राजन्! पाण्डुपुत्रों द्वारा सेना की व्यूहरचना देखकर राजा दुर्योधन अपने गुरु के पास गया और उसने ये शब्द कहे।            </div>
+            <div id="commentary"></div>
+            <audio controls controlsList="nodownload" src="../verse2/sounds/tatparya.mp3"></audio>
+            <br>    <br> 
+            धृतराष्ट्र जन्म से अन्धा था। दुर्भाग्यवश वह आध्यात्मिक दृष्टि से भी वंचित था। वह यह भी जानता था कि उसी के समान उसके पुत्र भी धर्म के मामले में अंधे हैं और उसे विश्वास था कि वे पाण्डवों के साथ कभी भी समझौता नहीं कर पायेंगे क्योंकि पाँचों पाण्डव जन्म से ही पवित्र थे। फिर भी उसे तीर्थस्थान के प्रभाव के विषय में सन्देह था। इसीलिए संजय युद्धभूमि की स्थिति के विषय में उसके प्रश्न के मंतव्य को समझ गया। अत: वह निराश राजा को प्रोत्साहित करना चाह रहा था। उसने उसे विश्वास दिलाया कि उसके पुत्र पवित्र स्थान के प्रभाव में आकर किसी प्रकार का समझौता करने नहीं जा रहे हैं। उसने राजा को बताया कि उसका पुत्र दुर्योधन पाण्डवों की सेना को देखकर तुरन्त अपने सेनापति द्रोणाचार्य को वास्तविक स्थिति से अवगत कराने गया। यद्यपि दुर्योधन को राजा कह कर सम्बोधित किया गया है तो भी स्थिति की गम्भीरता के कारण उसे सेनापति के पास जाना पड़ा। अतएव दुर्योधन राजनीतिज्ञ बनने के लिए सर्वथा उपयुक्त था। किन्तु जब उसने पाण्डवों की व्यूहरचना देखी तो उसका यह कूटनीतिक व्यवहार उसके भय को छिपा न पाया।        </div>
+            <div id="footer"></div>
+
+        </div>
+</body>
+
+<script src="../../ejs.js"></script>
+<script>
+    let n=47
+    var pathname = new URL(location.href).pathname.split('/');
+    pathname.pop()
+    pathname=pathname[pathname.length-1]
+    let ind=""
+    for(let i=0;i<pathname.length;++i){
+        if(Number.isInteger(parseInt(pathname[i])))ind+=pathname[i]
+    }
+    ind=parseInt(ind)
+    for(let i=0;i<n;++i){
+        let t=document.createElement('div')
+        t.setAttribute('class','verseBox')
+        if(i+1==ind){
+            t.setAttribute('id','currentVerse')
+        }
+        document.getElementById('verses').appendChild(t)
+    }
+    let verses=document.getElementsByClassName('verseBox')
+    for(let i=0;i<verses.length;++i){
+        verses[i].textContent=i+1
+        if(i+1==ind)continue
+        verses[i].addEventListener('click',()=>{
+            location.href='../verse'+parseInt(i+1)
+        })
+    }
+
+
+
+    let chname = document.getElementById('chname')
+    chname.innerHTML="<div style='font-size:20px;margin-bottom:15px;'>अध्याय <span id='chptr'>1</span></div>"+chname.textContent 
+    document.getElementById('title').textContent=document.getElementById('chname').textContent+" | श्लोक: "+ind
+
+
+
+   
+    var client = new XMLHttpRequest();
+client.open('GET', '/extra1.ejs');
+client.onreadystatechange = function() {
+    let ejstext=client.responseText
+    var html = ejs.render(ejstext);
+    document.getElementById('extra1').innerHTML = html;
+    
+}
+client.send();
+
+var client2 = new XMLHttpRequest();
+    client2.open('GET', '/extra2.ejs');
+    client2.onreadystatechange = function() {
+        let ejstext=client2.responseText
+        let html = ejs.render(ejstext);
+        document.getElementById('extra2').innerHTML = html;
+        
+
+        
+            var client6 = new XMLHttpRequest();
+                client6.open('GET', '/completed.ejs');
+                client6.onreadystatechange = function() {
+                    let ejstext=client6.responseText
+                    let html = ejs.render(ejstext);
+                    document.getElementById('completed').innerHTML = html;
+                
+                    try{
+                        let chptr=document.getElementById('chptr').textContent
+
+                        document.getElementById('pageInfo').innerHTML="<a href='/chapter"+chptr+"/verse1'>अध्याय "+chptr+"</a> > श्लोक "+ind
+
+                            let completedCheck=document.getElementById('completedCheck')
+                            let saveCheck = document.getElementById('saveCheck')
+
+
+                            if(localStorage.getItem('completedArray')){
+                                let arr=JSON.parse(localStorage.getItem('completedArray'))
+                                if(arr.includes(chptr+"."+ind)){
+                                    completedCheck.checked=true
+                                }
+                                let comp=(arr.length/700)*100
+                                comp=comp.toFixed(1)
+                                document.getElementById('progressBar').style.width=comp+"%"
+                                document.getElementById('completedData').textContent=arr.length+"/"+700
+                            }
+
+
+                            completedCheck.addEventListener('click',()=>{
+                                if(!localStorage.getItem('completedArray')){
+                                    localStorage.setItem('completedArray',JSON.stringify([]))
+                                }
+                                let completedArray = JSON.parse(localStorage.getItem('completedArray'))
+                                if(completedCheck.checked==true){
+                                    if(completedArray.includes(chptr+"."+ind)==false)
+                                    completedArray.push(chptr+"."+ind)
+                                    localStorage.setItem('completedArray',JSON.stringify(completedArray))
+                                }
+                                else{
+                                    const index = completedArray.indexOf(chptr+"."+ind);
+                                    if (index > -1) { 
+                                        completedArray.splice(index, 1); 
+                                    }
+                                    localStorage.setItem('completedArray',JSON.stringify(completedArray))
+                                }
+                                
+                                location.reload()
+                            })
+                            
+                            if(localStorage.getItem('savedArray')){
+                                let arr=JSON.parse(localStorage.getItem('savedArray'))
+                                if(arr.includes(chptr+"."+ind)){
+                                    saveCheck.checked=true
+                                }
+                            }
+                            saveCheck.addEventListener('click',()=>{
+                                if(!localStorage.getItem('savedArray')){
+                                    localStorage.setItem('savedArray',JSON.stringify([]))
+                                }
+                                let savedArray = JSON.parse(localStorage.getItem('savedArray'))
+                                if(saveCheck.checked==true){
+                                    if(savedArray.includes(chptr+"."+ind)==false)
+                                    savedArray.push(chptr+"."+ind)
+                                    localStorage.setItem('savedArray',JSON.stringify(savedArray))
+                                }
+                                else{
+                                    const index = savedArray.indexOf(chptr+"."+ind);
+                                    if (index > -1) { 
+                                        savedArray.splice(index, 1); 
+                                    }
+                                    localStorage.setItem('savedArray',JSON.stringify(savedArray))
+                                }
+                                console.log(savedArray)
+                                location.reload()
+                            })
+                        }
+                        catch(e){
+                            console.log(e)
+                        }
+                }
+            client6.send();
+
+    }
+client2.send();
+
+
+var client3 = new XMLHttpRequest();
+    client3.open('GET', '/footer.ejs');
+    client3.onreadystatechange = function() {
+        let ejstext=client3.responseText
+        let html = ejs.render(ejstext);
+        document.getElementById('footer').innerHTML = html;
+            // Get the button
+        let mybutton = document.getElementById("myBtn");
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+        }
+        
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+        try{
+            mybutton.addEventListener('click',topFunction)
+        }
+        catch(e){
+            console.log(e)
+        }
+
+    }
+client3.send();
+
+
+
+var client5 = new XMLHttpRequest();
+    client5.open('GET', '/nav.ejs');
+    client5.onreadystatechange = function() {
+        let ejstext=client5.responseText
+        let html = ejs.render(ejstext);
+        document.getElementById('nav').innerHTML = html;
+
+        var client4 = new XMLHttpRequest();
+        client4.open('GET', '/heading.ejs');
+        client4.onreadystatechange = function() {
+            let ejstext=client4.responseText
+            let html = ejs.render(ejstext);
+            document.getElementById('heading').innerHTML = html;
+
+            let fontSizeRange = document.getElementById('fontSizeRange')
+                fontSizeRange.addEventListener('input',()=>{
+                    let fontSize=fontSizeRange.value 
+                    document.getElementById('content').style.fontSize=fontSize+"px"
+            })
+            
+        }
+        client4.send();
+    }
+client5.send();
+
+</script>
+<script src="../../features.js"></script>
+
+</html>

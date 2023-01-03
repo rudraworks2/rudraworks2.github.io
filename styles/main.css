@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: skyblue;
+    display: flex;
+    justify-content: center;
+    /* background: url('../images/bg.jpg'); */
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    height: 100vh;
+}
+#container{
+    width: 90%;
+    height: 100%;
+    background: rgb(74, 109, 109);
+    display: grid;
+    grid-template-rows: 80px auto auto auto auto auto auto;
+    /* grid-template-columns: repeat(12,1fr);  */
+    grid-template-columns: .9fr .9fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-areas: "c c c c c c c c c c c c"
+                         "e e e e e e e e e e e e"
+                         "a a a b b b b b b b b b"
+                         "a a a b b b b b b b b b"
+                         "f f f b b b b b b b b b"
+                         "f f f b b b b b b b b b"
+                         "d d d d d d d d d d d d";
+    min-height: 100vh;
+    height: fit-content;
+    /* opacity: .987; */
+    /* padding-bottom: 40px; */
+
+}
+
+
+#chapters{
+    content: "Chapter";
+    grid-area: a;
+    background-color: honeydew;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid black;
+    height: fit-content;
+    /* min-height: 100vh; */
+    /* background: url('../images/left.jpg'); */
+    /* background: url('../images/oldpaper.jpg'); */
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+}
+#chname{
+    height: auto;
+    /* background-color: darkorange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    flex-direction: column;
+    border-bottom: 1px dashed black;
+    margin-bottom: 20px;
+    padding: 5px;
+    text-align: center;
+}
+#verses{
+    height: fit-content;
+   
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    /* column-gap: 2px; */
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: fit-content;
+}
+#content{
+    margin: 5px;
+    grid-area: b;
+    border: 1px solid black;
+    padding: 14px;
+    background-color: aliceblue;
+    /* background: url('../images/oldpaper2.jpg'); */
+    /* background: url('../images/oldpaper.jpg'); */
+
+    margin-left: 0;
+    font-size: 21px;
+}
+#nav{
+    grid-area: c;
+    background-color: orange;
+    margin: 5px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    padding: 5px;
+    user-select: none;
+}
+.verseBox{
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    margin: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    border: 1px solid black;
+    cursor: pointer;
+    user-select: none;
+}
+.verseBox:hover{
+    background-color: lightgreen;
+}
+
+#shlok{
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    font-weight: bolder;
+    padding: 10px;
+}
+#difficultWords{
+    /* margin: 10px; */
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    padding: 10px;
+}
+
+#meaning{
+    font-weight: bolder;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+#commentary{
+    margin-top: 5px;
+    padding: 5px;
+    padding: 10px;
+}
+audio{
+    height: 30px;
+    width: 100%;
+}
+#shlok_{
+    padding-top: 13x;
+    font-size: 20px;
+    text-align: center;
+    /* background-color: red; */
+}
+#chapterImage{
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px)  { /* smartphones, iPhone, portrait 480x320 phones */
+    #container{
+        grid-template-rows: 80px auto auto auto auto auto auto auto;
+        grid-template-areas: 
+        "c c c c c c c c c c c c"
+        "e e e e e e e e e e e e"
+        "a a a a a a a a a a a a"
+        "b b b b b b b b b b b b"
+        "b b b b b b b b b b b b"
+        "b b b b b b b b b b b b"
+        "f f f f f f f f f f f f"
+        "d d d d d d d d d d d d"
+        ;
+        width: 100%;
+        height: fit-content;
+        /* height: 100%; */
+        
+    }
+ 
+    #nav>h4{
+        font-size: 29px;
+    }
+    #content{
+        margin-left: 5px;
+    }
+}
+
+
+
+
+#currentVerse{
+    background-color: orange;
+}
+
+#fontSizeRange{
+    margin-left: auto;
+     width: 60px;
+}
+
+#heading{ 
+    font-size: 30px;
+ }
+
+#extra1{
+    height: fit-content;
+    grid-area: f;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: auto;
+}
+
+#extra2{
+    /* height: 100%; */
+    /* width: 100%; */
+    border: 1px solid black;
+    /* margin-left: auto; */
+    grid-area: e;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: gray;
+}
+
+#footer{
+    background-color: rgb(48, 40, 40);
+    grid-area: d;
+    margin: 5px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 5px;
+    text-align: center;
+}

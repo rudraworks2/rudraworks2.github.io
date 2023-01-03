@@ -1,0 +1,1 @@
+// alert(chptr.textContent+","+ind)

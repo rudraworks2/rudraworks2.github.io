@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<!-- <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.8/ejs.min.js"></script> -->
+<script src="/ejs.js"></script>
+<div id="output"></div>
+<!-- <script src="/assets/js/ejs.js"></script> -->
+<script>
+  let blogPosts = [
+    {
+        title: 'Perk is for real!',
+        body: '...',
+        author: 'Aaron Larner',
+        publishedAt: new Date('2016-03-19'),
+        createdAt: new Date('2016-03-19')
+    },
+    {
+        title: 'Development continues...',
+        body: '...',
+        author: 'Aaron Larner',
+        publishedAt: new Date('2016-03-18'),
+        createdAt: new Date('2016-03-18')
+    },
+    {
+        title: 'Welcome to Perk!',
+        body: '...',
+        author: 'Aaron Larner',
+        publishedAt: new Date('2016-03-17'),
+        createdAt: new Date('2016-03-17')
+    }
+];
+
+var client = new XMLHttpRequest();
+client.open('GET', '/extra1.ejs');
+client.onreadystatechange = function() {
+    let ejstext=client.responseText
+    console.log(ejstext)
+    var html = ejs.render(ejstext, {posts: blogPosts});
+    document.getElementById('output').innerHTML = html;
+}
+client.send();
+
+</script>
+</html>
