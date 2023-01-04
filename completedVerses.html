@@ -4,17 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Completed Shloks</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: skyblue;
+        }
+        #container{
+            margin-top: 30px;
+            padding: 10px;
+            /* background-color: aqua; */
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        li{
+            margin: 10px;
+        }
+        #home{
+            width: 100%;
+            background-color: gray;
+            text-align: center;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Completed Shloks</h1>
-    <ol id="ol"></ol>
+    <a href="/"> <div id="home">home</div></a>
+   
+    <div id="container">
+        <h1>Completed Shloks</h1>
+        <span id="empty"></span>
+        <ol id="ol"></ol>
+    </div>
+
 </body>
 <script>
     let ol=document.getElementById('ol')
     if(localStorage.getItem('completedArray')){
         let arr = JSON.parse(localStorage.getItem('completedArray'))
         
+        if(arr.length==0){
+            document.getElementById('empty').textContent="empty!"
+        }
         for(let i=0;i<arr.length;++i){
             let ch='',ver=''
             let k=arr[i].split('.')
@@ -24,7 +61,7 @@
             let a = document.createElement('a')
 
             a.setAttribute('href','/chapter'+ch+'/verse'+ver)
-            a.textContent="Chapter "+ch+" , Verse "+ver
+            a.textContent="अध्याय "+ch+" , श्लोक "+ver
             li.appendChild(a)
             ol.appendChild(li)
         }

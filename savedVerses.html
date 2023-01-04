@@ -4,11 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Saved Shloks</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: skyblue;
+        }
+        #container{
+            margin-top: 30px;
+            padding: 10px;
+            /* background-color: aqua; */
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        li{
+            margin: 10px;
+        }
+        #home{
+            width: 100%;
+            background-color: gray;
+            text-align: center;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Saved Shloks</h1>
-    <ol id="ol"></ol>
+    <a href="/"> <div id="home">home</div></a>
+   
+    <div id="container">
+        <h1>Saved Shloks</h1>
+        <span id="empty"></span>
+        <ol id="ol"></ol>
+    </div>
+
 </body>
 <script>
     let ol=document.getElementById('ol')
