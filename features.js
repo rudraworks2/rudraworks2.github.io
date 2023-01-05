@@ -7,4 +7,4 @@ setTimeout(() => {
             console.log(e)
         }
         
-}, 200);
+}, 500);
