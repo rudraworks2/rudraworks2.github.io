@@ -100,6 +100,9 @@ body{
     font-size: 40px;
     padding: 5px;
     user-select: none;
+    -webkit-text-stroke: 2px black; /* width and color */
+
+    font-family: sans; color: rgb(172, 169, 196);
 }
 .verseBox{
     background-color: white;
