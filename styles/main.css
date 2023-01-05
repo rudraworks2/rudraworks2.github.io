@@ -113,6 +113,9 @@ body{
     border: 1px solid black;
     cursor: pointer;
     user-select: none;
+    /* background-image: linear-gradient(white, #f4f8fe); */
+    /* box-shadow: none; */
+    border: 1px solid #d9e5ec;
 }
 .verseBox:hover{
     background-color: lightgreen;
