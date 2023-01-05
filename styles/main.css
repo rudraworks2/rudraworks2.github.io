@@ -147,10 +147,7 @@ body{
     padding: 5px;
     padding: 10px;
 }
-audio{
-    height: 30px;
-    width: 100%;
-}
+
 #shlok_{
     padding-top: 13x;
     font-size: 20px;
@@ -234,3 +231,20 @@ audio{
     padding: 5px;
     text-align: center;
 }
+
+audio{
+    height: 40px;
+    width: 100%;
+}
+audio::-webkit-media-controls-panel {
+    background-color: #56AEFF;
+  }
+  
+  audio::-webkit-media-controls-play-button {
+    background-color: #B1D4E0;
+    border-radius: 50%;
+  }
+  
+  audio::-webkit-media-controls-play-button:hover {
+    background-color: rgba(177,212,224, .7);
+  }
